@@ -31,7 +31,7 @@ opencv-python-headless==4.11.0.86
 opt_einsum==3.4.0
 packaging==24.2
 pillow==11.1.0
-protobuf==3.19.6
+protobuf==3.19.6  # Set protobuf version to avoid conflicts with TensorFlow-GPU
 psutil==6.1.1
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
@@ -45,8 +45,7 @@ tensorboard==2.10.1
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
 tensorflow-estimator==2.10.0
-tensorflow-gpu==2.10.0
-tensorflow-intel==2.15.0
+tensorflow-gpu==2.10.0  # Ensuring TensorFlow GPU is used
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.5.0
 tqdm==4.66.5
