@@ -24,14 +24,14 @@ Markdown==3.7
 MarkupSafe==3.0.2
 ml-dtypes==0.2.0
 numexpr==2.10.2
-numpy==1.26.4
+numpy<=1.24.3,>=1.22
 oauthlib==3.2.2
 opencv-python==4.11.0.86
 opencv-python-headless==4.11.0.86
 opt_einsum==3.4.0
 packaging==24.2
 pillow==11.1.0
-protobuf==3.19.6  # Set protobuf version to avoid conflicts with TensorFlow-GPU
+protobuf>=3.20.3,<5.0.0
 psutil==6.1.1
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
@@ -41,11 +41,11 @@ rsa==4.9
 scipy==1.13.1
 setuptools==75.1.0
 six==1.17.0
-tensorboard==2.10.1
+tensorboard>=2.13.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
-tensorflow-estimator==2.10.0
-tensorflow-gpu==2.10.0  # Ensuring TensorFlow GPU is used
+tensorflow-estimator==2.13.0
+tensorflow==2.13.0
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==2.5.0
 tqdm==4.66.5
