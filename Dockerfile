@@ -1,27 +1,32 @@
-# Use NVIDIA CUDA base image
-FROM nvidia/cuda:12.2.2-base-ubuntu22.04
+# Use NVIDIA's CUDA 11.8 base image with Ubuntu 22.04
+FROM nvidia/cuda:11.8.0-base-ubuntu22.04
 
-# Set up working directory
-WORKDIR /workspace
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 
-# Install dependencies
-# Install dependencies including OpenBLAS for scipy/numpy
-RUN apt update && apt install -y \
-    python3 python3-pip git \
-    libsm6 libxext6 libxrender-dev \
-    ffmpeg libgl1-mesa-glx \
-    build-essential cmake libopenblas-dev \
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip python3-dev \
+    git wget unzip \
     && rm -rf /var/lib/apt/lists/*
 
-
-# Copy DeepFaceLab from the local folder (Prevents GitHub cloning)
-COPY . /workspace/DeepFaceLab
-
-# Set up Python environment
+# Set working directory
 WORKDIR /workspace/DeepFaceLab
 
-# Install all dependencies (Including the updated OpenCV version)
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the requirements.txt file from your local machine to the Docker image
+COPY requirements.txt .
 
-# Run interactive bash session
+# Debugging: Check if the file exists inside the container
+RUN ls -lah requirements.txt
+
+# Install TensorFlow and essential dependencies
+RUN pip3 install --upgrade pip && \
+    pip3 install tensorflow==2.13.1 numpy opencv-python
+
+# Install dependencies from requirements.txt
+RUN pip3 install -r requirements.txt
+
+# Set default shell to bash
 CMD ["/bin/bash"]

@@ -1,10 +1,10 @@
-version: '3.8'
+version: "3.8"
 
 services:
   deepfacelab:
+    image: deepfacelab-gpu
     build: .
     container_name: deepfacelab
-    runtime: nvidia
     deploy:
       resources:
         reservations:
@@ -12,11 +12,10 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    volumes:
-      - ./workspace:/workspace
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
-    stdin_open: true
-    tty: true
-    restart: unless-stopped
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    volumes:
+      - .:/workspace/DeepFaceLab
+    working_dir: /workspace/DeepFaceLab
+    command: /bin/bash
