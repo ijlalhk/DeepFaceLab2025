@@ -25,7 +25,7 @@ pip install -r requirements-cuda.txt  # For GPU users
 ---
 
 ## **🚀 Step 3: Modify DeepFaceLab Code for NumPy Compatibility**
-DeepFaceLab’s code required a minor modification to support newer versions of NumPy. We updated `S3FDExtractor.py` to replace `np.int` with `int`.
+DeepFaceLab’s code required a minor modification to support newer versions of NumPy. We updated `S3FDExtractor.py` to replace `int` with `int`.
 
 ### **Edit the following file:**
 ```
@@ -34,7 +34,7 @@ DeepFaceLab/facelib/S3FDExtractor.py
 
 ### **Find and replace this line:**
 ```python
-bboxlist = [ x[:-1].astype(np.int) for x in bboxlist if x[-1] >= 0.5]
+bboxlist = [ x[:-1].astype(int) for x in bboxlist if x[-1] >= 0.5]
 ```
 
 ### **With:**
@@ -86,7 +86,8 @@ python main.py train --training-data-src-dir workspace/data_src/aligned --traini
 
 ## **🚀 Step 7: Merge Faces into the Destination Video**
 ```bash
-python main.py merge --input-dir workspace/data_dst --output-dir workspace/result
+python main.py merge --input-dir workspace/data_dst/aligned --output-dir workspace/merged --output-mask-dir workspace/merged/masks --aligned-dir workspace/data_dst/aligned --model-dir workspace/model --model SAEHD
+
 ```
 
 ---
@@ -105,3 +106,17 @@ workspace/final_output.mp4
 ```
 
 🎬 Enjoy your deepfake video! 🚀
+
+
+new to check histogram
+```
+python main.py sort --input-dir workspace/data_dst/aligned --by hist
+```
+to do the merging
+```
+python main.py merge --input-dir workspace/data_dst --aligned-dir workspace/data_dst/aligned --output-dir workspace/merged --output-mask-dir workspace/merged/masks --model-dir workspace/model --model SAEHD
+```
+to make video
+``` 
+C:\Users\ihk\.conda\envs\deepfacelab\lib\site-packages\imageio_ffmpeg\binaries\ffmpeg-win-x86_64-v7.1.exe -r 30 -i frame_%04d.png -b:v 16M -c:v libx264 -pix_fmt yuv420p ..\result.mp4
+```
