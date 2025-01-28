@@ -19,7 +19,7 @@ cd DeepFaceLab
 
 ## **🚀 Step 2: Install Dependencies**
 ```bash
-pip install -r requirements-cuda.txt  # For GPU users
+pip install -r requirements.txt  # For GPU users
 ```
 
 once this is done we need to set ffmpeg path in cuda so that it will always work to get the path of ffmpeg

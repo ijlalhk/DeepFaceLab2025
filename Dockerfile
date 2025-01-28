@@ -21,7 +21,7 @@ COPY . /workspace/DeepFaceLab
 WORKDIR /workspace/DeepFaceLab
 
 # Install all dependencies (Including the updated OpenCV version)
-RUN pip install --no-cache-dir -r requirements-cuda.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Run interactive bash session
 CMD ["/bin/bash"]
