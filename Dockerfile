@@ -27,5 +27,15 @@ RUN pip3 install --upgrade pip && \
     pip3 install tensorflow==2.13.1 numpy opencv-python && \
     pip3 install -r requirements.txt
 
+# Install system dependencies for OpenCV and ffmpeg
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+
+
+
+
 # Set default shell to bash
 CMD ["/bin/bash"]

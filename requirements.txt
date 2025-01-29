@@ -12,3 +12,4 @@ protobuf>=3.20.3,<5.0.0
 tensorboard>=2.13.0
 google-auth-oauthlib>=0.5,<1.1
 colorama==0.4.6
+ffmpeg-python
