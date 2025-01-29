@@ -265,7 +265,7 @@ class FANExtractor(object):
         a_ch, a_h, a_w = a.shape
 
         b = a.reshape ( (a_ch, a_h*a_w) )
-        c = b.argmax(1).reshape ( (a_ch, 1) ).repeat(2, axis=1).astype(np.float)
+        c = b.argmax(1).reshape ( (a_ch, 1) ).repeat(2, axis=1).astype(float)
         c[:,0] %= a_w
         c[:,1] = np.apply_along_axis ( lambda x: np.floor(x / a_w), 0, c[:,1] )
 

@@ -59,6 +59,6 @@ def draw_text_lines (image, rect, text_lines, color=(1,1,1), border=0.2, font=No
         draw_text (image, (l, i*h_per_line, r, (i+1)*h_per_line), text_lines[i], color, border, font)
 
 def get_draw_text_lines ( image, rect, text_lines, color=(1,1,1), border=0.2, font=None):
-    image = np.zeros ( image.shape, dtype=np.float )
+    image = np.zeros ( image.shape, dtype=float )
     draw_text_lines ( image, rect, text_lines, color, border, font)
     return image

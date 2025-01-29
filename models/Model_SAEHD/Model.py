@@ -177,8 +177,8 @@ Examples: df, liae, df-d, df-ud, liae-ud, ...
 
             self.options['pretrain'] = io.input_bool ("Enable pretraining mode", default_pretrain, help_message="Pretrain the model with large amount of various faces. After that, model can be used to train the fakes more quickly. Forces random_warp=N, random_flips=Y, gan_power=0.0, lr_dropout=N, styles=0.0, uniform_yaw=Y")
 
-        if self.options['pretrain'] and self.get_pretraining_data_path() is None:
-            raise Exception("pretraining_data_path is not defined")
+        # if self.options['pretrain'] and self.get_pretraining_data_path() is None:
+        #     raise Exception("pretraining_data_path is not defined")
 
         self.gan_model_changed = (default_gan_patch_size != self.options['gan_patch_size']) or (default_gan_dims != self.options['gan_dims'])
 

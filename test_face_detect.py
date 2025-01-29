@@ -8,7 +8,7 @@ detector = MTCNN()
 
 # Directories
 input_dir = '/DeepFaceLab/workspace/data_src'
-output_dir = '/DeepFaceLab/workspace/aligned_src'
+output_dir = '/DeepFaceLab/workspace/data_src/aligned'
 
 # Create output directory if it doesn't exist
 os.makedirs(output_dir, exist_ok=True)
